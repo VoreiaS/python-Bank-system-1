@@ -1,0 +1,312 @@
+# this is a sample bank managing system python code ! for beginners 
+
+
+import time
+
+system_user_info = {}
+usercount = 0
+Bank_account_blance = 9999.99
+Topic = ("Main Menu")
+# main Menu
+while True:
+    print("                                    ABC bank  ")
+    print("                                    " + Topic + "         ")
+    print("1) Add a new customer")
+    print("2) View details of a customer including his/her bank balance")
+    print("3) View details of all the customers with their bank balances")
+    print("4) Deposit money from a given account")
+    print("5) Withdraw money from a given account")
+    print("6) Update customer details")
+    print("7) Exit")
+
+    answer_main_menu = input("                                        Your choice: ")
+    Topic = ("Main Menu")
+# when system user info Lenth is 5 the loop should be brake
+
+    
+# menu-01
+
+    
+        
+    if answer_main_menu == "1":
+        if len(system_user_info) < 6:
+            Topic=("Add a new customer.")
+            print("                                    ABC bank  ")
+            print("                                    " + Topic + "         ")
+            while True:
+                i=usercount
+                
+                print("Bank Account Number must be 10 digits")
+                Bank_Account_number = input("Bank Account Number - ")
+                if len(Bank_Account_number) != 10:
+                    print("Bank Account Number must be 10 digits")
+                    Bank_Account_number = input("Bank Account Number - ")
+                    continue
+                else:
+                    print("Nic must be 10  characters")
+                    Nic_number = (input("Nic                 - "))
+                    if len(Nic_number)!= 10:
+                        print("Nic must be 10  characters")
+                        time.sleep(2)
+                        break
+                    
+                print("First Name can be have max  10 characters")
+                First_Name = input("First Name          - ")
+                if len(First_Name)>10:
+                    print("First Name can be have max  10 characters")
+                    time.sleep(2)
+                    break
+                print("Last Name can be have max  15 characters")
+                Last_Name  = input("Last Name           - ")
+                if len(Last_Name)>15:
+                    print("Last Name can be have max  15 characters")
+                    time.sleep(2)
+                    break
+                Birth_Date = input("Birth Date          - ")
+                
+                print("Permanent address can be have max  15 characters")
+                Permanent_address = input("permanent address   - ")
+                if len(Permanent_address)> 15:
+                    print("Permanent address can be have max  15 characters")
+                    time.sleep(2)
+                    break
+                
+                print("Phone Number must be 10 digits")
+                phone_Number = input("phone number        - ")
+                if len(phone_Number)!= 10:
+                    print("Phone Number must be 10 digits")
+                    time.sleep(2)
+                    break
+                
+                while True:
+                    Answer = input("Do you want to save the account (yes/no)? ")
+                    if Answer.lower() == "yes" or Answer.lower() == "y":
+                        user_details = [Bank_Account_number, Nic_number, First_Name, Last_Name, Birth_Date, Permanent_address, phone_Number, Bank_account_blance]
+                        system_user_info[usercount] = user_details
+                        usercount += 1
+                        print("User added")
+                        time.sleep(0.5)
+                        break
+                    elif answer.lower() == 'no':
+                        break
+                    else:
+                        print("Your answer is invalid")
+                        continue
+                break
+                            
+                        
+        else:
+            print("Maximum number of users reached.")
+            time.sleep(1)
+            break
+# menu-02
+
+
+    elif answer_main_menu == "2":
+        Topic = ("View details of a customer")
+        print("                                    ABC bank  ")
+        print("                                    " + Topic + "         ")
+        print("")
+        while True:
+            Bank_Account_number_Temp = input("     Bank Account Number - ")
+            for i in range(0, len(system_user_info)):
+                if system_user_info[i][0] == Bank_Account_number_Temp:
+                    print("")
+                    print("     Bank Account Number -", system_user_info[i][0])
+                    print("     Nic                 -", system_user_info[i][1])
+                    print("     phone Number        -", system_user_info[i][6])
+                    print("     First Name          -", system_user_info[i][2])
+                    print("     Bank Balance        -", system_user_info[i][7])
+                    print("")
+                    time.sleep(2)
+            Answer_2=input("Do you want to view another account details (Yes/No)? ")
+            if Answer_2.lower()=="no":
+                break
+                        
+
+# menu-03
+
+
+    elif answer_main_menu == "3":
+        Topic=("View details of all customers")
+        print("                                    ABC bank  ")
+        print("                                    " + Topic + "         ")
+        print("")
+        print(f"{'Bank Account Number':<25}, {'Nic':^12}, {'Phone Number':^18}, {'First Name':^18}, {'Last Name':^18}, {'Bank Balance':^20}")
+        for i in range(0, len(system_user_info)):
+            print(f"{system_user_info[i][0]:<25}" , f"{system_user_info[i][1]:^12}", f"{system_user_info[i][6]:^18}", f"{system_user_info[i][2]:^18}",f"{system_user_info[i][3]:^18}",f"{system_user_info[i][7]:^20}")
+            print("")
+        while True:
+            Answer_3=input("Do you want to update the account details (Yes/No)? ")
+            if Answer_3.lower()=="yes":
+                Bank_Account_number=input("     Bank Account Number - ")
+                for i in range (0,len(system_user_info)):
+                        if system_user_info[i][0]==Bank_Account_number:
+                            
+                            print("Nic must be 10  characters")
+                            Nic_number = (input("Nic                 - "))
+                            if len(Nic_number)!= 10:
+                                print("Nic must be 10  characters")
+                                time.sleep(2)
+                                break
+                            
+                            print("First Name can be have max  10 characters")
+                            First_Name = (input("First Name          - "))
+                            if len(First_Name)> 10:
+                                print("First Name can be have max  10 characters")
+                                time.sleep(2)
+                                break
+                            
+                            print("Last Name can be have max  15 characters")
+                            Last_Name  = (input("Last Name           - "))
+                            if len(Last_Name)>15:
+                                print("Last Name can be have max  15 characters")
+                                time.sleep(2)
+                                break
+                            
+                            Birth_Date = (input("Birth Date          - "))
+                            Permanent_address = (input("permanent address   - "))
+                            if len(Permanent_address)>15:
+                                print("Permanent address can be have max  15 characters")
+                                time.sleep(2)
+                                break
+                            phone_Number = (input("phone number        - "))
+                            if len(phone_Number)!= 10:
+                                print("Phone Number must be 10 digits")
+                                time.sleep(2)
+                                break
+                            
+                            #asing new  values to past lsit elements 
+                            
+                            system_user_info[i][2]=First_Name
+                            system_user_info[i][6]=phone_Number
+                            system_user_info[i][1]=Nic_number
+                            system_user_info[i][3]=Last_Name
+                            system_user_info[i][4]=Birth_Date
+                            system_user_info[i][5]= Permanent_address
+                            #get ansewer the question of ("Do you want to save the new details (yes/No) ?")
+                            answer=input("Do you want to save the new details (yes/No) ?")
+                            if answer=="yes":
+                            #store in replace old account details
+                                system_user_info[i] = [system_user_info[i][0], system_user_info[i][1], system_user_info[i][2], system_user_info[i][3],system_user_info[i][4], system_user_info[i][5],system_user_info[i][6], system_user_info[i][7]]        
+                                break
+                            else:
+                                break
+                else:
+                    break
+            else:
+                break
+                
+                
+# menu-04
+
+
+    elif answer_main_menu == "4":
+        Topic=("Deposit Money to a given account")
+        print("                                    ABC bank  ")
+        print("                                    " + Topic + "         ")
+        print("")
+        diposit_account_Number=input(" Bank Account number - ")
+        Deposit_Amount=int(input(" Deposit Amount      - "))
+        for i in range(0,len(system_user_info)):
+            if system_user_info[i][0]==diposit_account_Number:
+                system_user_info[i][7]=(system_user_info[i][7]+Deposit_Amount)
+                print(" user account details updated")
+                time.sleep(0.5)
+            else:
+                ("This Bank account number doesn't exist")
+                time.sleep(0.5)
+# menu-05
+
+
+    elif answer_main_menu == "5":
+        Topic==("Withdraw money from a given account")
+        print("                                    ABC bank  ")
+        print("                                    " + Topic + "         ")
+        print("")
+        u=0
+        while u!=5:
+            Bank_Account_number_withdraw=(input("Bank Account Number -"))
+            Withdraw_Amount=int(input("Withdraw Amount    -"))
+            for acc_num in range(0,len(system_user_info)):
+                if system_user_info[acc_num][0]==Bank_Account_number_withdraw:
+                    system_user_info[acc_num][7]=(system_user_info[acc_num][7]-Withdraw_Amount)
+                    print("user bank balance updated ")
+                    u=5
+                    break
+            if u!=5:
+                print("This Bank account number doesn't exist")
+# menu-06
+
+
+    elif answer_main_menu == "6":
+        Topic=("Update Customer Details")
+        print("                                    ABC bank  ")
+        print("                                    " + Topic + "         ")
+        print("")
+        Bank_Account_number=input("Bank Account Number -")
+        print("")
+        print("")
+        for i in range (0,len(system_user_info)):
+            if system_user_info[i][0]==Bank_Account_number:
+                Nic_number = int(input("Nic                 - "))
+                if len(str(Nic_number))!= 10:
+                    print("Nic must be 10  characters")
+                    time.sleep(2)
+                    break
+                First_Name = str(input("First Name          - "))
+                if len(First_Name)> 10:
+                    print("First Name can be have max  10 characters")
+                    time.sleep(2)
+                    break
+                Last_Name  = str(input("Last Name           - "))
+                if len(Last_Name)>15:
+                    print("Last Name can be have max  15 characters")
+                    time.sleep(2)
+                    break
+                
+                Birth_Date = (input("Birth Date          - "))
+
+                Permanent_address = str(input("permanent address   - "))
+                if len(Permanent_address)> 15:
+                    print("Permanent address can be have max  15 characters")
+                    time.sleep(2)
+                    break
+                
+                print("Phone Number must be 10 digits")
+                phone_Number = input("phone number        - ")
+                if len(phone_Number)!= 10:
+                    print("Phone Number must be 10 digits")
+                    time.sleep(2)
+                    break
+                
+                # initialize the values for dictionary elements
+                
+                system_user_info[i][2]=First_Name
+                system_user_info[i][6]=phone_Number
+                system_user_info[i][1]=Nic_number
+                system_user_info[i][3]=Last_Name
+                system_user_info[i][4]=Birth_Date
+                system_user_info[i][5]= Permanent_address
+                
+                #get the answer for question of ("Do you want to save the new details (yes/No) ?")
+                
+                answer=str(input("Do you want to save the new details (yes/No) ?"))
+                if answer.lower()=="yes":
+                    
+                #store in replace old account details
+                
+                    system_user_info[i] = [system_user_info[i][0], system_user_info[i][1], system_user_info[i][2], system_user_info[i][3],system_user_info[i][4], system_user_info[i][5],system_user_info[i][6], system_user_info[i][7]]
+                    print(" user account details has updated ")
+                    time.sleep(0.5)
+                else:
+                    break
+            else:
+                print("This Bank account does not exist ")
+                print("Try again")
+                break
+# menu-07
+    elif answer_main_menu == "7":
+        break
+#stu id 20240294
+#suvi
